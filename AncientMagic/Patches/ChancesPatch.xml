@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio 2009 - the last available FREE Community Edition 7.0.2.746
+
+        The Infused mod creates a chances framework and makes two records to cover all the possibilites.
+        That framework was designed as an environment that allows for the possibility of greater detail,
+        and this mod add-on makes use of that space created by the Infused mod's author, notfood.
+
+        This mod removes the two broad-brush records that covered the tech spectrum in range bands,
+        and inserts specific records for each of the tech levels.
+    -->
+<Patch>
+    <!-- ===============================================================================================
+         Remove two records
+    -->
+    <Operation Class="PatchOperationRemove">
+        <xpath>//Infused.ChanceDef[defName = "Default"]</xpath>
+	</Operation>
+    <Operation Class="PatchOperationRemove">
+        <xpath>//Infused.ChanceDef[defName = "IndustrialAndBelow"]</xpath>
+	</Operation>
+
+    <!-- ==============================================================================================
+         Add/Insert six records
+    
+         Since we have likely removed all Infused.ChanceDef records (unless another mod author has added more)
+         we'll use an Add operation for our first record to guarantee at least one Infused.ChanceDef record.
+    -->    
+    <Operation Class="PatchOperationAdd"> <!-- Animal tech level -->
+        <xpath>/Defs</xpath>
+        <value>
+            <!-- Our new entry into the Defs collection -->
+            <Infused.ChanceDef>
+                <defName>Animal</defName>
+                <match>
+                    <categories>
+                        <li>Apparel</li>
+                        <li>WeaponsMelee</li>
+                        <li>WeaponsRanged</li>
+                    </categories>
+                </match>
+                <techLevel>
+                    <min>Animal</min>
+                    <max>Animal</max>
+                </techLevel>
+                <chances>
+                    <awful>0.33</awful>
+                    <shoddy>0.42</shoddy>
+                    <poor>0.50</poor>
+                    <normal>0.58</normal>
+                    <good>0.67</good>
+                    <superior>0.75</superior>
+                    <excellent>0.83</excellent>
+                    <masterwork>0.91</masterwork>
+                    <legendary>1.00</legendary>
+                </chances>
+            </Infused.ChanceDef>
+            <!-- end of new entry -->
+		</value>
+	</Operation>
+    
+    <!--        
+         Now that we have at least one record of type Infused.ChanceDef we can Insert siblings
+    -->
+    <Operation Class="PatchOperationInsert"> <!-- Neolithic tech level -->
+        <xpath>//Infused.ChanceDef</xpath>
+        <value>
+            <!-- Our second entry, inserted as a sibling of Infused.ChanceDef records -->
+            <Infused.ChanceDef>
+                <defName>Neolithic</defName>
+                <match>
+                    <categories>
+                        <li>Apparel</li>
+                        <li>WeaponsMelee</li>
+                        <li>WeaponsRanged</li>
+                    </categories>
+                </match>
+                <techLevel>
+                    <min>Neolithic</min>
+                    <max>Neolithic</max>
+                </techLevel>
+                <chances>
+                    <awful>0.11</awful>
+                    <shoddy>0.22</shoddy>
+                    <poor>0.33</poor>
+                    <normal>0.44</normal>
+                    <good>0.56</good>
+                    <superior>0.67</superior>
+                    <excellent>0.78</excellent>
+                    <masterwork>0.89</masterwork>
+                    <legendary>1.00</legendary>
+                </chances>
+            </Infused.ChanceDef>
+            <!-- end of second entry -->
+		</value>
+	</Operation>
+
+   <!--
+        The remaining four entries are Inserted as siblings
+    -->
+   <Operation Class="PatchOperationInsert"> <!-- Medieval tech level -->
+        <xpath>//Infused.ChanceDef</xpath>
+        <value>
+            <Infused.ChanceDef>
+                <defName>Medieval</defName>
+                <match>
+                    <categories>
+                        <li>Apparel</li>
+                        <li>WeaponsMelee</li>
+                        <li>WeaponsRanged</li>
+                    </categories>
+                </match>
+                <techLevel>
+                    <min>Medieval</min>
+                    <max>Medieval</max>
+                </techLevel>
+                <chances>
+                    <awful>0.08</awful>
+                    <shoddy>0.17</shoddy>
+                    <poor>0.25</poor>
+                    <normal>0.33</normal>
+                    <good>0.42</good>
+                    <superior>0.50</superior>
+                    <excellent>0.58</excellent>
+                    <masterwork>0.67</masterwork>
+                    <legendary>0.75</legendary>
+                </chances>
+            </Infused.ChanceDef>
+        </value>
+    </Operation>
+    
+    <!-- Industrial tech level -->
+    <Operation Class="PatchOperationInsert">
+        <xpath>//Infused.ChanceDef</xpath>
+        <value>
+            <Infused.ChanceDef>
+                <defName>Industrial</defName>
+                <match>
+                    <categories>
+                        <li>Apparel</li>
+                        <li>WeaponsMelee</li>
+                        <li>WeaponsRanged</li>
+                    </categories>
+                </match>
+                <techLevel>
+                    <min>Industrial</min>
+                    <max>Industrial</max>
+                </techLevel>
+                <chances>
+                    <awful>0.06</awful>
+                    <shoddy>0.11</shoddy>
+                    <poor>0.17</poor>
+                    <normal>0.22</normal>
+                    <good>0.28</good>
+                    <superior>0.33</superior>
+                    <excellent>0.39</excellent>
+                    <masterwork>0.44</masterwork>
+                    <legendary>0.50</legendary>
+                </chances>
+            </Infused.ChanceDef>
+        </value>
+    </Operation>
+    
+    <!-- Spacer tech level -->
+    <Operation Class="PatchOperationInsert">
+        <xpath>//Infused.ChanceDef</xpath>
+        <value>
+            <Infused.ChanceDef>
+                <defName>Spacer</defName>
+                <match>
+                    <categories>
+                        <li>Apparel</li>
+                        <li>WeaponsMelee</li>
+                        <li>WeaponsRanged</li>
+                    </categories>
+                </match>
+                <techLevel>
+                    <min>Spacer</min>
+                    <max>Spacer</max>
+                </techLevel>
+                <chances>
+                    <awful>0.03</awful>
+                    <shoddy>0.06</shoddy>
+                    <poor>0.08</poor>
+                    <normal>0.11</normal>
+                    <good>0.14</good>
+                    <superior>0.17</superior>
+                    <excellent>0.19</excellent>
+                    <masterwork>0.22</masterwork>
+                    <legendary>0.25</legendary>
+                </chances>
+            </Infused.ChanceDef>
+        </value>
+    </Operation>
+    
+    <!-- Ultra tech level -->
+    <Operation Class="PatchOperationInsert">
+        <xpath>//Infused.ChanceDef</xpath>
+        <value>
+            <Infused.ChanceDef>
+                <defName>Ultra</defName>
+                <match>
+                    <categories>
+                        <li>Apparel</li>
+                        <li>WeaponsMelee</li>
+                        <li>WeaponsRanged</li>
+                    </categories>
+                </match>
+                <techLevel>
+                    <min>Ultra</min>
+                    <max>Ultra</max>
+                </techLevel>
+                <chances>
+                    <awful>0.01</awful>
+                    <shoddy>0.02</shoddy>
+                    <poor>0.03</poor>
+                    <normal>0.04</normal>
+                    <good>0.06</good>
+                    <superior>0.07</superior>
+                    <excellent>0.08</excellent>
+                    <masterwork>0.09</masterwork>
+                    <legendary>0.10</legendary>
+                </chances>
+            </Infused.ChanceDef>
+        </value>
+    </Operation>
+</Patch>

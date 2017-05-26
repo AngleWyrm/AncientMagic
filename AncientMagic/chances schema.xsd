@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio - FREE Community Edition 7.0.2.746 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Defs" type="Infused.ChanceDef" />
+  <xs:complexType name="Infused.ChanceDef">
+    <xs:sequence>
+      <xs:element name="defName" type="xs:ID" />
+      <xs:element name="match">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="categories" type="CategoryList" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="techLevel" type="TechLevelList" />
+      <xs:element name="chances" type="ChancesList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CategoryList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="li" type="categoryEnumeration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="categoryEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Apparel" />
+      <xs:enumeration value="WeaponsMelee" />
+      <xs:enumeration value="WeaponsRanged" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TechLevelList">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="li" type="techLevelEnumeration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="techLevelEnumeration">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Animal" />
+      <xs:enumeration value="Neolithic" />
+      <xs:enumeration value="Medieval" />
+      <xs:enumeration value="Industrial" />
+      <xs:enumeration value="Spacer" />
+      <xs:enumeration value="Ultra" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ChancesList">
+    <xs:sequence>
+      <xs:element name="aweful" type="Fraction" />
+      <xs:element name="shoddy" type="Fraction" />
+      <xs:element name="poor" type="Fraction" />
+      <xs:element name="normal" type="Fraction" />
+      <xs:element name="good" type="Fraction" />
+      <xs:element name="superior" type="Fraction" />
+      <xs:element name="excellent" type="Fraction" />
+      <xs:element name="masterwork" type="Fraction" />
+      <xs:element name="legendary" type="Fraction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Fraction">
+    <xs:restriction base="xs:float">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
