@@ -12,23 +12,30 @@
     <!-- ===============================================================================================
          Remove two records
     -->
-    <Operation Class="PatchOperationRemove">
-        <xpath>/Defs/Infused.ChanceDef[defName = "Default"]</xpath>
-	</Operation>
-    <Operation Class="PatchOperationRemove">
-        <xpath>/Defs/Infused.ChanceDef[defName = "IndustrialAndBelow"]</xpath>
-	</Operation>
-
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationTest">
+                <xpath>/Defs/Infused.ChanceDef</xpath>
+            </li>
+            <li Class="PatchOperationRemove">
+                <xpath>/Defs/Infused.ChanceDef[defName = "Default"]</xpath>
+            </li>
+            <li Class="PatchOperationRemove">
+                <xpath>/Defs/Infused.ChanceDef[defName = "IndustrialAndBelow"]</xpath>
+            </li>
+        </operations>
+    </Operation>
     <!-- ==============================================================================================
-         Add/Insert six records
+         Add six records
     
-         Since we have likely removed all Infused.ChanceDef records (unless another mod author has added more)
-         we'll use an Add operation for our first record to guarantee at least one Infused.ChanceDef record.
-    -->    
-    <Operation Class="PatchOperationAdd"> <!-- Animal tech level -->
+         Since we have likely removed all Infused.ChanceDef records (unless a mod author has added more)
+         the first record will be an add operation to guarantee at least one Infused.ChanceDef record.
+    -->
+    <Operation Class="PatchOperationAdd">
+        <!-- Animal tech level -->
         <xpath>/Defs</xpath>
         <value>
-            <!-- Our new entry into the Defs collection -->
             <Infused.ChanceDef>
                 <defName>Animal</defName>
                 <match>
@@ -54,17 +61,15 @@
                     <legendary>1.00</legendary>
                 </chances>
             </Infused.ChanceDef>
-            <!-- end of new entry -->
-		</value>
-	</Operation>
-    
+        </value>
+    </Operation>
     <!--        
-         Now that we have at least one record of type Infused.ChanceDef we can Insert siblings
+         Now that we have at least one record of type Infused.ChanceDef we can insert siblings
     -->
-    <Operation Class="PatchOperationInsert"> <!-- Neolithic tech level -->
+    <Operation Class="PatchOperationInsert">
+        <!-- Neolithic tech level -->
         <xpath>/Defs/Infused.ChanceDef</xpath>
         <value>
-            <!-- Our second entry, inserted as a sibling of Infused.ChanceDef records -->
             <Infused.ChanceDef>
                 <defName>Neolithic</defName>
                 <match>
@@ -90,14 +95,10 @@
                     <legendary>1.00</legendary>
                 </chances>
             </Infused.ChanceDef>
-            <!-- end of second entry -->
-		</value>
-	</Operation>
-
-   <!--
-        The remaining four entries are Inserted as siblings
-    -->
-   <Operation Class="PatchOperationInsert"> <!-- Medieval tech level -->
+        </value>
+    </Operation>
+    <!-- Medieval tech level -->
+    <Operation Class="PatchOperationInsert">
         <xpath>/Defs/Infused.ChanceDef</xpath>
         <value>
             <Infused.ChanceDef>
@@ -127,7 +128,6 @@
             </Infused.ChanceDef>
         </value>
     </Operation>
-    
     <!-- Industrial tech level -->
     <Operation Class="PatchOperationInsert">
         <xpath>/Defs/Infused.ChanceDef</xpath>
@@ -159,7 +159,6 @@
             </Infused.ChanceDef>
         </value>
     </Operation>
-    
     <!-- Spacer tech level -->
     <Operation Class="PatchOperationInsert">
         <xpath>/Defs/Infused.ChanceDef</xpath>
@@ -191,7 +190,6 @@
             </Infused.ChanceDef>
         </value>
     </Operation>
-    
     <!-- Ultra tech level -->
     <Operation Class="PatchOperationInsert">
         <xpath>/Defs/Infused.ChanceDef</xpath>
